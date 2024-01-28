@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+main > article {
+  margin: 0;
+}
+
+p {
+  text-align: justify;
+}
+
+footer {
+  text-align: center;
+}
+
+header,
+footer {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+article {
+  margin: 0px;
+}
+
+hgroup {
+  margin-bottom: 0px;
+}
+
+table {
+  width: 94%;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+details {
+  align-items: center;
+}
+
+mark {
+  display: block;
+  margin: 1em !important;
+}
+
+/* Indigo Light scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme='light'],
+:root:not([data-theme='dark']) {
+  --primary: #04002a;
+  --primary-hover: #06003b;
+  --primary-focus: rgba(0, 15, 113, 0.125);
+  --primary-inverse: #fff;
+}
+
+/* Indigo Dark scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --primary: #04002a;
+    --primary-hover: #06003b;
+    --primary-focus: rgba(0, 15, 113, 0.125);
+    --primary-inverse: #fff;
+  }
+}
+
+/* Indigo Dark scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme='dark'] {
+  --primary: #04002a;
+  --primary-hover: #06003b;
+  --primary-focus: rgba(0, 15, 113, 0.125);
+  --primary-inverse: #fff;
+}
+
+/* Indigo (Common styles) */
+:root {
+  --form-element-active-border-color: var(--primary);
+  --form-element-focus-color: var(--primary-focus);
+  --switch-color: var(--primary-inverse);
+  --switch-checked-background-color: var(--primary);
+}
