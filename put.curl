@@ -1,1 +1,0 @@
-curl -X PUT -H "Content-Type: application/json" -H "auth: qwerty" -d '{"name": "Oliver Skipp"}' http://localhost:3000/players/4
