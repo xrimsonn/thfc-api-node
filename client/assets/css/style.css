@@ -12,6 +12,7 @@ body {
 
 div > img {
   max-width: 128px;
+  max-height: 128px;
 }
 
 main > article {
@@ -61,7 +62,14 @@ mark {
   display: flex;
 }
 
+.edit {
+  width: fit-content;
+  height: 100%;
+}
 
+.input {
+  width: 60% !important;
+}
 
 /* Indigo Light scheme (Default) */
 /* Can be forced with data-theme="light" */
