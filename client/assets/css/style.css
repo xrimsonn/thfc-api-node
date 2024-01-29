@@ -10,6 +10,10 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
+div > img {
+  max-width: 128px;
+}
+
 main > article {
   margin: 0;
 }
@@ -50,6 +54,14 @@ mark {
   display: block;
   margin: 1em !important;
 }
+
+.item {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+}
+
+
 
 /* Indigo Light scheme (Default) */
 /* Can be forced with data-theme="light" */
