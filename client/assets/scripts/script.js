@@ -32,7 +32,7 @@ function loadData() {
         img.src = p.image;
         name.innerHTML = '#' + p.number + ' - ' + p.name;
         position.innerHTML = p.position + ' - ' + formattedDate;
-        edit.innerHTML = 'Edit';
+        edit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
         edit.className = 'edit';
         edit.addEventListener('click', () => {
           const nameInput = document.createElement('input');
