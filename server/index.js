@@ -200,7 +200,7 @@ const port = 3000;
 app.use(
   cors({
     origin: '*',
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'PUT'],
   })
 );
 app.use(conn.json());
@@ -219,7 +219,6 @@ app.put('/players/:number', auth, (req, res) => {
   if (player) {
     Object.assign(player, updatedData);
     
-
     res.json({
       message: `Player with number ${number} updated`,
       data: player,
@@ -242,9 +241,9 @@ app.listen(port, () => {
 });
 
 function auth(req, res, next) {
-  const token = req.headers.auth;
+  const auth = req.headers.auth;
 
-  if (token == 'qwerty') {
+  if (auth == 'qwerty') {
     next();
   } else {
     res.send('Invalid credentials.');
