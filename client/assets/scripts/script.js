@@ -16,8 +16,10 @@ function loadData() {
         const hgroup = document.createElement('hgroup');
         const name = document.createElement('h2');
         const position = document.createElement('p');
+        const edit = document.createElement('button');
+        const form = document.createElement('form');
+        form.className = 'form';
 
-        // Supongamos que p.born es la cadena de fecha en formato '2002-09-01'
         var bornDate = new Date(p.born);
         var options = {
           year: 'numeric',
@@ -25,14 +27,64 @@ function loadData() {
           day: 'numeric',
         };
 
-        var formattedDate = bornDate.toLocaleDateString(
-          'en-US',
-          options
-        );
+        var formattedDate = bornDate.toLocaleDateString('en-US', options);
 
         img.src = p.image;
         name.innerHTML = '#' + p.number + ' - ' + p.name;
         position.innerHTML = p.position + ' - ' + formattedDate;
+        edit.innerHTML = 'Edit';
+        edit.className = 'edit';
+        edit.addEventListener('click', () => {
+          const nameInput = document.createElement('input');
+          const posInput = document.createElement('input');
+          const submit = document.createElement('button');
+
+          nameInput.type = 'text';
+          nameInput.placeholder = p.name;
+          nameInput.className = 'input';
+
+          posInput.type = 'text';
+          posInput.placeholder = p.position;
+          posInput.className = 'input';
+
+          submit.textContent = 'Submit';
+          submit.type = 'Button';
+          submit.addEventListener('click', () => {
+            edit.remove();
+            fetch('http://localhost:3000/players/' + p.number, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+                'auth': 'qwerty',
+              },
+              body: JSON.stringify({
+                name: nameInput.value,
+                position: posInput.value,
+              }),
+            })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Bad Request');
+                console.log(response);
+              }
+              return response.json();
+            })
+            .then(data => {
+              console.log('Solicitud exitosa:', data);
+              location.reload();
+            })
+            .catch(error => {
+              console.error('Error en la solicitud:', error);
+            });
+          });
+          
+          submit.className = 'input';
+
+          form.append(nameInput);
+          form.append(posInput);
+          form.appendChild(submit);
+          edit.remove();
+        });
 
         hgroup.appendChild(name);
         hgroup.appendChild(position);
@@ -42,6 +94,8 @@ function loadData() {
 
         player.appendChild(img);
         player.appendChild(hgroup);
+        player.appendChild(edit);
+        player.appendChild(form);
 
         article.appendChild(player);
       })
